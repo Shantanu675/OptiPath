@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, Navigation } from 'lucide-react';
 import map_logo from '../../assets/map_logo.png'
 
 const CityGraphPathfinder = () => {
@@ -136,7 +136,11 @@ const CityGraphPathfinder = () => {
   return (
     <div className="w-full h-screen bg-gradient-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
       {/* Header */}
-      <h1 className="mt-5 ml-4 w-max px-6 text-3xl text-purple-600 font-extrabold">OptiPath</h1>
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl text-purple-600 font-extrabold mb-4 flex items-center gap-2 px-8">
+          <Navigation className="w-6 h-6 sm:w-8 sm:h-8" />
+          OptiPath
+          <span className='text-black text-sm pt-3'>(Dikstra Algorithm)</span>
+      </h1>
       <div className="flex justify-between top-4 left-4 right-4 z-20 mx-7">
         <div className="bg-white rounded-2xl w-1/3 shadow-lg p-4 md:p-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
