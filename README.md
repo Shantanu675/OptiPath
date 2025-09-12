@@ -29,5 +29,5 @@ It allows users to select two cities on a graph and visualizes the **optimal rou
 ---
 
 ## 📖 Documentation
-- [System Architecture]([docs/architecture.md](https://deepwiki.com/Shantanu675/OptiPath))
+- [System Architecture](https://deepwiki.com/Shantanu675/OptiPath)
 
