@@ -8,6 +8,7 @@
 		<version>3.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	<packaging>jar</packaging>
 	<groupId>com.optiPath</groupId>
 	<artifactId>pathOptimizer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
