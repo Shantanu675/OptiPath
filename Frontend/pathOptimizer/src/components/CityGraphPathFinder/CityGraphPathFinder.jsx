@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RefreshCw, Navigation } from 'lucide-react';
 import map_logo from '../../assets/map_logo.png'
 
@@ -8,6 +8,18 @@ const CityGraphPathfinder = () => {
   const [shortestPath, setShortestPath] = useState(null);
   const [hoveredCity, setHoveredCity] = useState(null);
   const [shortestPathData, setShortestPathData] = useState({});
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 700);
+    };
+
+    handleResize(); // check on mount
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // City data with positions and connections
   const cities = {
@@ -133,13 +145,23 @@ const CityGraphPathfinder = () => {
     return isInPath ? 'stroke-yellow-400 stroke-[8px]' : 'stroke-blue-300 stroke-[1px]';
   };
 
+  if (isSmallScreen) {
+    return (
+      <div className="flex items-center justify-center w-full h-screen bg-indigo-500">
+        <h2 className="text-red-900 text-2xl font-bold text-center px-4">
+          🚫 Screen too small! <br /> Please use a device like Tab or Desktop.
+        </h2>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full h-screen bg-gradient-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
       {/* Header */}
       <h1 className="text-2xl sm:text-3xl lg:text-4xl text-purple-600 font-extrabold mb-4 flex items-center gap-2 px-8">
           <Navigation className="w-6 h-6 sm:w-8 sm:h-8" />
           OptiPath
-          <span className='text-black text-sm pt-3'>(Dikstra Algorithm)</span>
+          <span className='text-black text-sm pt-3'>(Dijkstra Algorithm)</span>
       </h1>
       <div className="flex justify-between top-4 left-4 right-4 z-20 mx-7">
         <div className="bg-white rounded-2xl w-1/3 shadow-lg p-4 md:p-6">
