@@ -71,7 +71,11 @@ const CityGraphPathfinder = () => {
   // Simple pathfinding using BFS
   const findShortestPath = async (from, to) => {
     try {
-      const response = await fetch(`http://localhost:8080/${from}-${to}`);
+      const API_BASE_URL = import.meta.env.VITE_API_KEY || process.env.REACT_APP_API_KEY;
+      console.log('API Base URL:', API_BASE_URL);
+      
+      const response = await fetch(`${API_BASE_URL}/${from}-${to}`);
+
       const data = await response.json();
       // console.log('Fetched data:', data);
       
